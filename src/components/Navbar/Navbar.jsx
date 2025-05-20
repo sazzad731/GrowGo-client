@@ -18,8 +18,8 @@ const Navbar = ({setTheme}) => {
           to="/"
           className={({ isActive }) =>
             isActive
-              ? "font-semibold text-lg text-greenBtn dark:text-white"
-              : "font-semibold text-lg text-greenBtn2 dark:text-bgLight hover:text-greenBtn dark:hover:text-white transition-colors"
+              ? "font-semibold text-lg text-greenPrimary dark:text-white"
+              : "font-semibold text-lg text-greenSecondary dark:text-lightGreen hover:text-greenPrimary dark:hover:text-white transition-colors"
           }
         >
           Home
@@ -28,39 +28,39 @@ const Navbar = ({setTheme}) => {
       <li>
         <NavLink to="/all-plants" className={({ isActive }) =>
             isActive
-              ? "font-semibold text-lg text-greenBtn dark:text-white"
-              : "font-semibold text-lg text-greenBtn2 dark:text-bgLight hover:text-greenBtn dark:hover:text-white transition-colors"
+              ? "font-semibold text-lg text-greenPrimary dark:text-white"
+              : "font-semibold text-lg text-greenSecondary dark:text-lightGreen hover:text-greenPrimary dark:hover:text-white transition-colors"
           }>All Plants</NavLink>
       </li>
       <li>
         <NavLink to="/add-plant" className={({ isActive }) =>
             isActive
-              ? "font-semibold text-lg text-greenBtn dark:text-white"
-              : "font-semibold text-lg text-greenBtn2 dark:text-bgLight hover:text-greenBtn dark:hover:text-white transition-colors"
+              ? "font-semibold text-lg text-greenPrimary dark:text-white"
+              : "font-semibold text-lg text-greenSecondary dark:text-lightGreen hover:text-greenPrimary dark:hover:text-white transition-colors"
           }>Add Plant</NavLink>
       </li>
       <li>
         <NavLink to="/my-plants" className={({ isActive }) =>
             isActive
-              ? "font-semibold text-lg text-greenBtn dark:text-white"
-              : "font-semibold text-lg text-greenBtn2 dark:text-bgLight hover:text-greenBtn dark:hover:text-white transition-colors"
+              ? "font-semibold text-lg text-greenPrimary dark:text-white"
+              : "font-semibold text-lg text-greenSecondary dark:text-lightGreen hover:text-greenPrimary dark:hover:text-white transition-colors"
           }>My Plants</NavLink>
       </li>
     </>
   );
   const authButtons = (
     <>
-      <Link className="py-2 px-6 outline-2 font-semibold outline-greenBtn text-greenBtn hover:bg-greenBtn hover:text-bgLight transition-colors rounded-lg text-center dark:outline-bgLight hover:dark:bg-bgLight hover:dark:text-greenBtn dark:text-bgLight me-0 lg:me-5">
+      <Link className="py-2 px-6 outline-2 font-semibold outline-greenPrimary text-greenPrimary hover:bg-greenPrimary hover:text-lightGreen transition-colors rounded-lg text-center dark:outline-lightGreen hover:dark:bg-lightGreen hover:dark:text-greenPrimary dark:text-lightGreen me-0 lg:me-5">
         Login
       </Link>
-      <Link className="py-2 px-6 outline-2 font-semibold outline-greenBtn text-greenBtn hover:bg-greenBtn hover:text-bgLight transition-colors rounded-lg text-center dark:outline-bgLight hover:dark:bg-bgLight hover:dark:text-greenBtn dark:text-bgLight">
+      <Link className="py-2 px-6 outline-2 font-semibold outline-greenPrimary text-greenPrimary hover:bg-greenPrimary hover:text-lightGreen transition-colors rounded-lg text-center dark:outline-lightGreen hover:dark:bg-lightGreen hover:dark:text-greenPrimary dark:text-lightGreen">
         Register
       </Link>
     </>
   );
   return (
     <header>
-      <div className="navbar max-w-[100rem] mx-auto py-4 dark:text-bgLight">
+      <div className="navbar max-w-[100rem] mx-auto py-4 dark:text-lightGreen">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -82,7 +82,7 @@ const Navbar = ({setTheme}) => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 dark:bg-bgDark gap-4 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-base-100 dark:bg-greenPrimary gap-4 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
               {navLinks}
               {authButtons}
@@ -90,7 +90,7 @@ const Navbar = ({setTheme}) => {
           </div>
           <Link to="/" className="flex items-center gap-2 ">
             <img src={logo} alt="Logo" />
-            <span className="text-2xl font-extrabold mt-2 text-greenBtn dark:text-bgLight">
+            <span className="text-2xl font-extrabold mt-2 text-greenPrimary dark:text-lightGreen">
               GrowGo.
             </span>
           </Link>
@@ -105,7 +105,7 @@ const Navbar = ({setTheme}) => {
 
             {/* sun icon */}
             <svg
-              className="swap-on h-7 w-7 fill-greenBtn dark:fill-bgLight"
+              className="swap-on h-7 w-7 fill-greenPrimary dark:fill-lightGreen"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >
@@ -114,7 +114,7 @@ const Navbar = ({setTheme}) => {
 
             {/* moon icon */}
             <svg
-              className="swap-off h-7 w-7 fill-greenBtn dark:fill-bgLight"
+              className="swap-off h-7 w-7 fill-greenPrimary dark:fill-lightGreen"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >

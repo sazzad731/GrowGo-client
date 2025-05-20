@@ -8,7 +8,7 @@ const Root = () => {
     <div
       className={`${
         theme === "dark" && "dark"
-      } bg-bgLight dark:bg-bgDark font-inter`}
+      } bg-lightGreen dark:bg-greenPrimary font-inter`}
     >
       <Navbar setTheme={setTheme} theme={theme} />
       <main className="max-w-[100rem] mx-auto">
