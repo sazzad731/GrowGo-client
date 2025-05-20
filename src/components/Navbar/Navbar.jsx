@@ -86,12 +86,6 @@ const Navbar = ({setTheme}) => {
             >
               {navLinks}
               {authButtons}
-              {/* <Link className="py-2 px-6 outline-2 font-semibold outline-greenBtn text-greenBtn hover:bg-greenBtn hover:text-bgLight transition-colors rounded-lg text-center dark:outline-bgLight hover:dark:bg-bgLight hover:dark:text-greenBtn dark:text-bgLight">
-                Login
-              </Link>
-              <Link className="py-2 px-6 outline-2 font-semibold outline-greenBtn text-greenBtn hover:bg-greenBtn hover:text-bgLight transition-colors rounded-lg text-center dark:outline-bgLight hover:dark:bg-bgLight hover:dark:text-greenBtn dark:text-bgLight">
-                Register
-              </Link> */}
             </ul>
           </div>
           <Link to="/" className="flex items-center gap-2 ">
