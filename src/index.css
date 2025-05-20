@@ -6,4 +6,8 @@
 
 @theme {
   --font-inter: "Inter", "sans-serif";
+  --color-bgLight: #dad7cd;
+  --color-bgDark: #283618;
+  --color-greenBtn: #344e41;
+  --color-greenBtn2: #588157;
 }
