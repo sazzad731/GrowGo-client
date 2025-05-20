@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link, NavLink } from 'react-router';
 import logo from "../../assets/image/logo.png"
 
-const Navbar = () => {
-  
+const Navbar = ({setTheme}) => {
+  const checkboxRef = useRef();
+  const handleTheme = ()=>{
+    if(checkboxRef.current.checked){
+      setTheme("dark")
+    }else{
+      setTheme("")
+    }
+  }
   const navLinks = (
     <>
       <li>
@@ -11,8 +18,8 @@ const Navbar = () => {
           to="/"
           className={({ isActive }) =>
             isActive
-              ? "font-semibold text-lg text-greenBtn"
-              : "font-semibold text-lg text-greenBtn2 hover:text-greenBtn"
+              ? "font-semibold text-lg text-greenBtn dark:text-white"
+              : "font-semibold text-lg text-greenBtn2 dark:text-bgLight hover:text-greenBtn dark:hover:text-white transition-colors"
           }
         >
           Home
@@ -21,29 +28,39 @@ const Navbar = () => {
       <li>
         <NavLink to="/all-plants" className={({ isActive }) =>
             isActive
-              ? "font-semibold text-lg text-greenBtn"
-              : "font-semibold text-lg text-greenBtn2 hover:text-greenBtn"
+              ? "font-semibold text-lg text-greenBtn dark:text-white"
+              : "font-semibold text-lg text-greenBtn2 dark:text-bgLight hover:text-greenBtn dark:hover:text-white transition-colors"
           }>All Plants</NavLink>
       </li>
       <li>
         <NavLink to="/add-plant" className={({ isActive }) =>
             isActive
-              ? "font-semibold text-lg text-greenBtn"
-              : "font-semibold text-lg text-greenBtn2 hover:text-greenBtn"
+              ? "font-semibold text-lg text-greenBtn dark:text-white"
+              : "font-semibold text-lg text-greenBtn2 dark:text-bgLight hover:text-greenBtn dark:hover:text-white transition-colors"
           }>Add Plant</NavLink>
       </li>
       <li>
         <NavLink to="/my-plants" className={({ isActive }) =>
             isActive
-              ? "font-semibold text-lg text-greenBtn"
-              : "font-semibold text-lg text-greenBtn2 hover:text-greenBtn"
+              ? "font-semibold text-lg text-greenBtn dark:text-white"
+              : "font-semibold text-lg text-greenBtn2 dark:text-bgLight hover:text-greenBtn dark:hover:text-white transition-colors"
           }>My Plants</NavLink>
       </li>
     </>
   );
+  const authButtons = (
+    <>
+      <Link className="py-2 px-6 outline-2 font-semibold outline-greenBtn text-greenBtn hover:bg-greenBtn hover:text-bgLight transition-colors rounded-lg text-center dark:outline-bgLight hover:dark:bg-bgLight hover:dark:text-greenBtn dark:text-bgLight me-0 lg:me-5">
+        Login
+      </Link>
+      <Link className="py-2 px-6 outline-2 font-semibold outline-greenBtn text-greenBtn hover:bg-greenBtn hover:text-bgLight transition-colors rounded-lg text-center dark:outline-bgLight hover:dark:bg-bgLight hover:dark:text-greenBtn dark:text-bgLight">
+        Register
+      </Link>
+    </>
+  );
   return (
     <header>
-      <div className="navbar max-w-[100rem] mx-auto py-4">
+      <div className="navbar max-w-[100rem] mx-auto py-4 dark:text-bgLight">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -65,20 +82,21 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 gap-4 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-base-100 dark:bg-bgDark gap-4 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
               {navLinks}
-              <Link className="py-2 px-6 outline-2 font-semibold outline-greenBtn text-greenBtn hover:bg-greenBtn hover:text-bgLight transition-colors rounded-lg text-center">
+              {authButtons}
+              {/* <Link className="py-2 px-6 outline-2 font-semibold outline-greenBtn text-greenBtn hover:bg-greenBtn hover:text-bgLight transition-colors rounded-lg text-center dark:outline-bgLight hover:dark:bg-bgLight hover:dark:text-greenBtn dark:text-bgLight">
                 Login
               </Link>
-              <Link className="py-2 px-6 outline-2 font-semibold outline-greenBtn text-greenBtn hover:bg-greenBtn hover:text-bgLight transition-colors rounded-lg text-center">
+              <Link className="py-2 px-6 outline-2 font-semibold outline-greenBtn text-greenBtn hover:bg-greenBtn hover:text-bgLight transition-colors rounded-lg text-center dark:outline-bgLight hover:dark:bg-bgLight hover:dark:text-greenBtn dark:text-bgLight">
                 Register
-              </Link>
+              </Link> */}
             </ul>
           </div>
           <Link to="/" className="flex items-center gap-2 ">
             <img src={logo} alt="Logo" />
-            <span className="text-2xl font-extrabold mt-2 text-greenBtn">
+            <span className="text-2xl font-extrabold mt-2 text-greenBtn dark:text-bgLight">
               GrowGo.
             </span>
           </Link>
@@ -86,14 +104,14 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu-horizontal gap-5 px-1">{navLinks}</ul>
         </div>
-        <div className="navbar-end gap-5">
-          <label className="swap swap-rotate me-3">
+        <div className="navbar-end">
+          <label className="swap swap-rotate me-5" onClick={handleTheme}>
             {/* this hidden checkbox controls the state */}
-            <input type="checkbox" />
+            <input type="checkbox" ref={checkboxRef} />
 
             {/* sun icon */}
             <svg
-              className="swap-on h-7 w-7 fill-greenBtn"
+              className="swap-on h-7 w-7 fill-greenBtn dark:fill-bgLight"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >
@@ -102,20 +120,14 @@ const Navbar = () => {
 
             {/* moon icon */}
             <svg
-              className="swap-off h-7 w-7 fill-greenBtn"
+              className="swap-off h-7 w-7 fill-greenBtn dark:fill-bgLight"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >
               <path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
             </svg>
           </label>
-
-          <Link className="py-2 px-6 outline-2 font-semibold outline-greenBtn text-greenBtn hover:bg-greenBtn hover:text-bgLight transition-colors rounded-lg hidden lg:block">
-            Login
-          </Link>
-          <Link className="py-2 px-6 outline-2 font-semibold outline-greenBtn text-greenBtn hover:bg-greenBtn hover:text-bgLight transition-colors rounded-lg hidden lg:block">
-            Register
-          </Link>
+          <div className='hidden lg:block'>{authButtons}</div>
         </div>
       </div>
     </header>
