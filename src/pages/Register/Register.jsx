@@ -1,7 +1,7 @@
 import React, { use, useState } from 'react';
 import { AuthContext } from '../../ContextProvider/Context/AuthContext';
 import Swal from 'sweetalert2';
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 const Register = () => {
   const { createUserEmailPass, handleUpdateProfile } = use(AuthContext);
@@ -115,6 +115,15 @@ const Register = () => {
             </div>
             <p className="label"></p>
           </fieldset>
+          <p className="text-greenSecondary dark:text-lightGreen">
+            Already have an account?{" "}
+            <Link
+              to="/login"
+              className="text-greenPrimary font-semibold dark:text-lightGreen"
+            >
+              Login
+            </Link>
+          </p>
           <div className="flex items-center justify-center mt-5">
             <button
               type="submit"
