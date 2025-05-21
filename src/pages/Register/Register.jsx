@@ -1,10 +1,32 @@
-import React from 'react';
+import React, { use } from 'react';
+import { AuthContext } from '../../ContextProvider/Context/AuthContext';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router';
 const Register = () => {
+  const { createUserEmailPass, handleUpdateProfile } = use(AuthContext);
+  const navigate = useNavigate();
+
   const handleCreateUser = (event)=>{
     event.preventDefault();
     const form = event.target;
     const formData = new FormData(form);
     const userData = Object.fromEntries(formData.entries());
+
+    createUserEmailPass(userData.email, userData.password)
+      .then(() =>{
+        handleUpdateProfile({
+          displayName: userData.name,
+          photoURL: userData.imageUrl,
+        }).then(()=>{
+          Swal.fire({
+            title: "Account Created Successfully",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1500
+          })
+          navigate("/")
+        }).catch(err=>console.log(err))
+      }).catch(err=>console.log(err))
   }
   return (
     <div className="min-h-screen pb-20 lg:px-0 px-3">
