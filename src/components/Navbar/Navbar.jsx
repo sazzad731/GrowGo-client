@@ -50,12 +50,26 @@ const Navbar = ({setTheme}) => {
   );
   const authButtons = (
     <>
-      <Link to="/login" className="py-2 px-6 outline-2 font-semibold outline-greenPrimary text-greenPrimary hover:bg-greenPrimary hover:text-lightGreen transition-colors rounded-lg text-center dark:outline-lightGreen hover:dark:bg-lightGreen hover:dark:text-greenPrimary dark:text-lightGreen me-0 lg:me-5">
+      <NavLink
+        to="/login"
+        className="py-2 px-6 outline-2 font-semibold outline-greenPrimary text-greenPrimary hover:bg-greenPrimary hover:text-lightGreen transition-colors rounded-lg text-center dark:outline-lightGreen hover:dark:bg-lightGreen hover:dark:text-greenPrimary dark:text-lightGreen me-0 lg:me-5"
+        style={({ isActive }) => ({
+          background: isActive && "#283618",
+          color: isActive && "#dad7cd",
+        })}
+      >
         Login
-      </Link>
-      <Link to="/register" className="py-2 px-6 outline-2 font-semibold outline-greenPrimary text-greenPrimary hover:bg-greenPrimary hover:text-lightGreen transition-colors rounded-lg text-center dark:outline-lightGreen hover:dark:bg-lightGreen hover:dark:text-greenPrimary dark:text-lightGreen">
+      </NavLink>
+      <NavLink
+        to="/register"
+        className="py-2 px-6 outline-2 font-semibold outline-greenPrimary text-greenPrimary hover:bg-greenPrimary hover:text-lightGreen transition-colors rounded-lg text-center dark:outline-lightGreen hover:dark:bg-lightGreen hover:dark:text-greenPrimary dark:text-lightGreen"
+        style={({ isActive }) => ({
+          background: isActive && "#283618",
+          color: isActive && "#dad7cd",
+        })}
+      >
         Register
-      </Link>
+      </NavLink>
     </>
   );
   return (

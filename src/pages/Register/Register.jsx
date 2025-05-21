@@ -1,9 +1,11 @@
-import React, { use } from 'react';
+import React, { use, useState } from 'react';
 import { AuthContext } from '../../ContextProvider/Context/AuthContext';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router';
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 const Register = () => {
   const { createUserEmailPass, handleUpdateProfile } = use(AuthContext);
+  const [ toggleEye, setToggleEye ] = useState(false);
   const navigate = useNavigate();
 
   const handleCreateUser = (event)=>{
@@ -11,22 +13,34 @@ const Register = () => {
     const form = event.target;
     const formData = new FormData(form);
     const userData = Object.fromEntries(formData.entries());
+    const validate = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+
+    if(!validate.test(userData.password)){
+      Swal.fire({
+        title: "Password must contain one uppercase, one lowercase letters, and be at least 6 characters long",
+        icon: "error",
+      })
+      return
+    }
 
     createUserEmailPass(userData.email, userData.password)
-      .then(() =>{
+      .then(() => {
         handleUpdateProfile({
           displayName: userData.name,
           photoURL: userData.imageUrl,
-        }).then(()=>{
-          Swal.fire({
-            title: "Account Created Successfully",
-            icon: "success",
-            showConfirmButton: false,
-            timer: 1500
+        })
+          .then(() => {
+            Swal.fire({
+              title: "Account Created Successfully",
+              icon: "success",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            navigate("/");
           })
-          navigate("/")
-        }).catch(err=>console.log(err))
-      }).catch(err=>console.log(err))
+          .catch((err) => console.log(err));
+      })
+      .catch((err) => console.log(err));
   }
   return (
     <div className="min-h-screen pb-20 lg:px-0 px-3">
@@ -52,6 +66,7 @@ const Register = () => {
               name="name"
               className="input w-full dark:focus:outline-lightGreen dark:focus:border-lightGreen dark:glass dark:placeholder:text-lightGreen"
               placeholder="Type here"
+              required
             />
             <p className="label"></p>
           </fieldset>
@@ -64,6 +79,7 @@ const Register = () => {
               name="email"
               className="input w-full dark:focus:outline-lightGreen dark:focus:border-lightGreen dark:glass dark:placeholder:text-lightGreen"
               placeholder="Type here"
+              required
             />
             <p className="label"></p>
           </fieldset>
@@ -76,19 +92,27 @@ const Register = () => {
               name="imageUrl"
               className="input w-full dark:focus:outline-lightGreen dark:focus:border-lightGreen dark:glass dark:placeholder:text-lightGreen"
               placeholder="Image url"
+              required
             />
             <p className="label"></p>
           </fieldset>
-          <fieldset className="fieldset">
+          <fieldset className="fieldset relative">
             <legend className="fieldset-legend text-lg dark:text-lightGreen">
               Your Password
             </legend>
             <input
-              type="password"
+              type={toggleEye ? "text" : "password"}
               name="password"
               className="input w-full dark:focus:outline-lightGreen dark:focus:border-lightGreen dark:glass dark:placeholder:text-lightGreen"
               placeholder="Type here"
+              required
             />
+            <div
+              className="absolute right-2.5 top-3.5 cursor-pointer dark:text-lightGreen z-50"
+              onClick={() => setToggleEye(!toggleEye)}
+            >
+              {toggleEye ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
+            </div>
             <p className="label"></p>
           </fieldset>
           <div className="flex items-center justify-center mt-5">
