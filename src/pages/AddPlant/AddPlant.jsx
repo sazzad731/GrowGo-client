@@ -32,7 +32,9 @@ const AddPlant = () => {
   
   return (
     <div className="min-h-screen">
-      <h2 className="text-center text-3xl mb-7 mt-10 font-semibold text-greenPrimary dark:text-lightGreen">Add a Plant</h2>
+      <h2 className="text-center text-3xl mb-7 mt-10 font-semibold text-greenPrimary dark:text-lightGreen">
+        Add a Plant
+      </h2>
       <div className="w-[76rem] mx-auto flex items-center bg-white dark:glass rounded-2xl">
         <img
           className="w-2xl h-[800px] rounded-l-2xl"
@@ -176,7 +178,7 @@ const AddPlant = () => {
           <div className="flex items-center justify-center mt-5">
             <button
               type="submit"
-              className="py-2 px-6 outline-2 font-semibold outline-greenPrimary dark:text-lightGreen text-greenPrimary dark:text-lightGreen hover:bg-greenPrimary dark:text-lightGreen hover:text-lightGreen transition-colors rounded-lg text-center dark:outline-lightGreen hover:dark:bg-lightGreen hover:dark:text-gre dark:text-lightGreenenPrimary dark:text-lightGreen cursor-pointer"
+              className="py-2 px-6 outline-2 font-semibold outline-greenPrimary text-greenPrimary hover:bg-greenPrimary hover:text-lightGreen transition-colors rounded-lg text-center dark:outline-lightGreen hover:dark:bg-lightGreen hover:dark:text-greenPrimary dark:text-lightGreen cursor-pointer"
             >
               Submit
             </button>
