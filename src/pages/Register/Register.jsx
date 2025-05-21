@@ -7,17 +7,17 @@ const Register = () => {
     const userData = Object.fromEntries(formData.entries());
   }
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen pb-20 lg:px-0 px-3">
       <h2 className="text-center text-3xl mb-7 mt-10 font-semibold text-greenPrimary dark:text-lightGreen">
         New to here?
       </h2>
-      <div className="w-[68rem] mx-auto flex items-center bg-white dark:glass rounded-2xl">
+      <div className="xl:w-[68rem] lg:w-[63rem] mx-auto flex items-center bg-white dark:glass rounded-2xl">
         <img
-          className="w-2xl h-[800px] rounded-l-2xl"
+          className="xl:w-2xl lg:w-[31rem] hidden lg:block h-[800px] rounded-l-2xl"
           src="https://images.unsplash.com/photo-1585664428450-1665a336eb19?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt="plant"
         />
-        <form onSubmit={handleCreateUser} className="w-full px-10">
+        <form onSubmit={handleCreateUser} className="w-full p-10">
           <h3 className="text-center text-2xl mb-20 font-semibold text-greenPrimary dark:text-lightGreen">
             Register
           </h3>
