@@ -1,8 +1,14 @@
-import React, { useRef } from 'react';
+import React, { use, useRef } from 'react';
 import { Link, NavLink } from 'react-router';
 import logo from "../../assets/image/logo.png"
+import { AuthContext } from "../../ContextProvider/Context/AuthContext"
+import { Tooltip } from "react-tooltip";
+import { signOut } from "firebase/auth";
+import Swal from 'sweetalert2';
+import { auth } from "../../firebase/firebase.config";
 
 const Navbar = ({setTheme}) => {
+  const { user } = use(AuthContext);
   const checkboxRef = useRef();
   const handleTheme = ()=>{
     if(checkboxRef.current.checked){
@@ -11,6 +17,19 @@ const Navbar = ({setTheme}) => {
       setTheme("")
     }
   }
+
+  const handleLogOut = ()=>{
+    signOut(auth).then(()=>{
+      Swal.fire({
+        title: "Log out Successful",
+        icon: "success"
+      })
+    }).catch(err => Swal.fire({
+      title: err.message,
+      icon: "error"
+    }))
+  }
+
   const navLinks = (
     <>
       <li>
@@ -26,50 +45,93 @@ const Navbar = ({setTheme}) => {
         </NavLink>
       </li>
       <li>
-        <NavLink to="/all-plants" className={({ isActive }) =>
+        <NavLink
+          to="/all-plants"
+          className={({ isActive }) =>
             isActive
               ? "font-semibold text-lg text-greenPrimary dark:text-white"
               : "font-semibold text-lg text-greenSecondary dark:text-lightGreen hover:text-greenPrimary dark:hover:text-white transition-colors"
-          }>All Plants</NavLink>
+          }
+        >
+          All Plants
+        </NavLink>
       </li>
-      <li>
-        <NavLink to="/add-plant" className={({ isActive }) =>
-            isActive
-              ? "font-semibold text-lg text-greenPrimary dark:text-white"
-              : "font-semibold text-lg text-greenSecondary dark:text-lightGreen hover:text-greenPrimary dark:hover:text-white transition-colors"
-          }>Add Plant</NavLink>
-      </li>
-      <li>
-        <NavLink to="/my-plants" className={({ isActive }) =>
-            isActive
-              ? "font-semibold text-lg text-greenPrimary dark:text-white"
-              : "font-semibold text-lg text-greenSecondary dark:text-lightGreen hover:text-greenPrimary dark:hover:text-white transition-colors"
-          }>My Plants</NavLink>
-      </li>
+      {user && (
+        <>
+          <li>
+            <NavLink
+              to="/add-plant"
+              className={({ isActive }) =>
+                isActive
+                  ? "font-semibold text-lg text-greenPrimary dark:text-white"
+                  : "font-semibold text-lg text-greenSecondary dark:text-lightGreen hover:text-greenPrimary dark:hover:text-white transition-colors"
+              }
+            >
+              Add Plant
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/my-plants"
+              className={({ isActive }) =>
+                isActive
+                  ? "font-semibold text-lg text-greenPrimary dark:text-white"
+                  : "font-semibold text-lg text-greenSecondary dark:text-lightGreen hover:text-greenPrimary dark:hover:text-white transition-colors"
+              }
+            >
+              My Plants
+            </NavLink>
+          </li>
+        </>
+      )}
     </>
   );
+
   const authButtons = (
     <>
-      <NavLink
-        to="/login"
-        className="py-2 px-6 outline-2 font-semibold outline-greenPrimary text-greenPrimary hover:bg-greenPrimary hover:text-lightGreen transition-colors rounded-lg text-center dark:outline-lightGreen hover:dark:bg-lightGreen hover:dark:text-greenPrimary dark:text-lightGreen me-0 lg:me-5"
-        style={({ isActive }) => ({
-          background: isActive && "#283618",
-          color: isActive && "#dad7cd",
-        })}
-      >
-        Login
-      </NavLink>
-      <NavLink
-        to="/register"
-        className="py-2 px-6 outline-2 font-semibold outline-greenPrimary text-greenPrimary hover:bg-greenPrimary hover:text-lightGreen transition-colors rounded-lg text-center dark:outline-lightGreen hover:dark:bg-lightGreen hover:dark:text-greenPrimary dark:text-lightGreen"
-        style={({ isActive }) => ({
-          background: isActive && "#283618",
-          color: isActive && "#dad7cd",
-        })}
-      >
-        Register
-      </NavLink>
+      {user ? (
+        <>
+          <button
+            className="py-2 px-6 outline-2 font-semibold outline-greenPrimary text-greenPrimary hover:bg-greenPrimary hover:text-lightGreen transition-colors rounded-lg text-center dark:outline-lightGreen hover:dark:bg-lightGreen hover:dark:text-greenPrimary dark:text-lightGreen me-0 lg:me-5 cursor-pointer"
+            onClick={handleLogOut}
+          >
+            Log out
+          </button>
+          <Tooltip id="my-tooltip" />
+          <div
+            data-tooltip-id="my-tooltip"
+            data-tooltip-content={user?.displayName}
+            className="avatar avatar-online cursor-pointer"
+          >
+            <div className="w-12 rounded-full">
+              <img src={user?.imageURL} />
+            </div>
+          </div>
+        </>
+      ) : (
+        <>
+          <NavLink
+            to="/login"
+            className="py-2 px-6 outline-2 font-semibold outline-greenPrimary text-greenPrimary hover:bg-greenPrimary hover:text-lightGreen transition-colors rounded-lg text-center dark:outline-lightGreen hover:dark:bg-lightGreen hover:dark:text-greenPrimary dark:text-lightGreen me-0 lg:me-5"
+            style={({ isActive }) => ({
+              background: isActive && "#283618",
+              color: isActive && "#dad7cd",
+            })}
+          >
+            Login
+          </NavLink>
+          <NavLink
+            to="/register"
+            className="py-2 px-6 outline-2 font-semibold outline-greenPrimary text-greenPrimary hover:bg-greenPrimary hover:text-lightGreen transition-colors rounded-lg text-center dark:outline-lightGreen hover:dark:bg-lightGreen hover:dark:text-greenPrimary dark:text-lightGreen"
+            style={({ isActive }) => ({
+              background: isActive && "#283618",
+              color: isActive && "#dad7cd",
+            })}
+          >
+            Register
+          </NavLink>
+        </>
+      )}
     </>
   );
   return (

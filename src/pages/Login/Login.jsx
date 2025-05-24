@@ -2,10 +2,11 @@ import React, { use, useState } from 'react';
 import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
 import { AuthContext } from '../../ContextProvider/Context/AuthContext';
 import Swal from 'sweetalert2';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 const Login = () => {
   const { loginEmailPassword, loginWithGoogle } = use(AuthContext);
   const [ toggleEye, setToggleEye ] = useState(false);
+  const navigate = useNavigate();
 
 
   const handleEmailPassLogin = (event)=>{
@@ -19,6 +20,7 @@ const Login = () => {
           title: "Login successful",
           icon: "success"
         })
+        navigate("/")
       }).catch(err =>
       {
         Swal.fire({
@@ -31,9 +33,12 @@ const Login = () => {
   const handleGoogleLogin = (event)=>{
     event.preventDefault();
     loginWithGoogle()
-      .then(result =>
-      {
-        console.log(result.user)
+      .then(() =>{
+        Swal.fire({
+          title: "Login successful",
+          icon: "success",
+        });
+        navigate("/")
       }).catch(err => console.log(err));
   }
   return (

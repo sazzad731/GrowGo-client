@@ -1,19 +1,21 @@
 import Swal from "sweetalert2";
 import sidePhoto from "../../assets/image/add-plant.png"
+import { use } from "react";
+import { AuthContext } from "../../ContextProvider/Context/AuthContext";
 const AddPlant = () => {
-  
+  const { user } = use(AuthContext);
   const handleAddPlant = (event)=>{
     event.preventDefault();
     const form = event.target;
     const formData = new FormData(form);
     const plantData = Object.fromEntries(formData.entries());
-    
+
     fetch("http://localhost:5000/add-plant", {
       method: "POST",
       headers: {
         "content-type": "application/json"
       },
-      body: JSON.stringify(plantData)
+      body: JSON.stringify({...plantData, name: user?.displayName, email: user?.email})
     })
       .then(res => res.json())
       .then(data => {
@@ -52,6 +54,7 @@ const AddPlant = () => {
                 placeholder="Type here"
                 name="plantName"
                 className="input w-full mb-5 dark:focus:outline-lightGreen dark:focus:border-lightGreen"
+                required
               />
             </fieldset>
             <fieldset className="fieldset">
@@ -63,6 +66,7 @@ const AddPlant = () => {
                 placeholder="Type here"
                 name="imageURL"
                 className="input w-full mb-5 dark:focus:outline-lightGreen dark:focus:border-lightGreen"
+                required
               />
             </fieldset>
             <fieldset className="fieldset">
@@ -73,6 +77,7 @@ const AddPlant = () => {
                 defaultValue="Pick a browser"
                 className="select"
                 name="category"
+                required
               >
                 <option disabled={true}>Pick a Category</option>
                 <option>Succulent</option>
@@ -90,6 +95,7 @@ const AddPlant = () => {
                 defaultValue="Pick a Level"
                 className="select"
                 name="careLevel"
+                required
               >
                 <option disabled={true}>Pick a level</option>
                 <option>easy</option>
@@ -106,6 +112,7 @@ const AddPlant = () => {
                 placeholder="e.g., Every 3 days"
                 name="wateringFreq"
                 className="input w-full mb-5 dark:focus:outline-lightGreen dark:focus:border-lightGreen"
+                required
               />
             </fieldset>
 
@@ -118,6 +125,7 @@ const AddPlant = () => {
                 placeholder="Type here"
                 name="lastWatered"
                 className="input w-full mb-5 dark:focus:outline-lightGreen dark:focus:border-lightGreen"
+                required
               />
             </fieldset>
             <fieldset className="fieldset">
@@ -129,6 +137,7 @@ const AddPlant = () => {
                 placeholder="Type here"
                 name="nextWatering"
                 className="input w-full mb-5 dark:focus:outline-lightGreen dark:focus:border-lightGreen"
+                required
               />
             </fieldset>
             <fieldset className="fieldset">
@@ -140,6 +149,7 @@ const AddPlant = () => {
                 placeholder="e.g., Healthy, Needs Attention"
                 name="health"
                 className="input w-full mb-5 dark:focus:outline-lightGreen dark:focus:border-lightGreen"
+                required
               />
             </fieldset>
             <fieldset className="fieldset">
@@ -149,7 +159,9 @@ const AddPlant = () => {
               <input
                 type="text"
                 placeholder="Your name"
+                value={user?.displayName}
                 name="userName"
+                disabled
                 className="input w-full mb-5 dark:focus:outline-lightGreen dark:focus:border-lightGreen"
               />
             </fieldset>
@@ -160,8 +172,10 @@ const AddPlant = () => {
               <input
                 type="email"
                 placeholder="Your email"
+                value={user?.email}
                 name="userEmail"
                 className="input w-full mb-5 dark:focus:outline-lightGreen dark:focus:border-lightGreen"
+                disabled
               />
             </fieldset>
             <fieldset className="fieldset col-span-2 w-full">
@@ -172,6 +186,7 @@ const AddPlant = () => {
                 className="textarea h-24 w-full dark:focus:outline-lightGreen dark:focus:border-lightGreen"
                 placeholder="Description"
                 name="description"
+                required
               ></textarea>
             </fieldset>
           </div>
