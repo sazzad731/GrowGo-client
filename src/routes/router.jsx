@@ -3,6 +3,7 @@ import Root from "../layout/Root";
 import AddPlant from "../pages/AddPlant/AddPlant";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -11,16 +12,20 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/add-plant",
-        element: <AddPlant/>
+        element: (
+          <PrivateRoute>
+            <AddPlant />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/login",
-        Component: Login
+        Component: Login,
       },
       {
         path: "/register",
-        Component: Register
-      }
-    ]
+        Component: Register,
+      },
+    ],
   },
 ]);
