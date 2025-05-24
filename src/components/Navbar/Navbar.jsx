@@ -97,10 +97,10 @@ const Navbar = ({setTheme}) => {
           >
             Log out
           </button>
-          <Tooltip id="my-tooltip" />
+          <Tooltip id="my-tooltip" className='z-50'/>
           <div
             data-tooltip-id="my-tooltip"
-            data-tooltip-content={user?.displayName}
+            data-tooltip-html={`Name: ${user?.displayName} <br/> Photo url: ${user?.photoURL}`}
             className="avatar avatar-online cursor-pointer"
           >
             <div className="w-12 rounded-full">
