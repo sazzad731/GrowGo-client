@@ -2,7 +2,7 @@ import React from 'react';
 
 const PlantCareMistakes = () => {
   return (
-    <section className="bg-green-50 dark:glass py-16 rounded-2xl my-10">
+    <section className="bg-green-50 dark:glass py-16 rounded-2xl my-20">
       <div className="max-w-6xl mx-auto px-4">
         <h2 className="text-3xl font-bold text-greenPrimary dark:text-lightGreen mb-10 text-center">
           Top Plant Care Mistakes to Avoid
