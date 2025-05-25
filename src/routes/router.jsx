@@ -5,6 +5,7 @@ import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import PrivateRoute from "./PrivateRoute";
 import Home from "../pages/Home/Home";
+import AllPlants from "../pages/AllPlants/AllPlants";
 
 export const router = createBrowserRouter([
   {
@@ -14,6 +15,10 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <Home/>
+      },
+      {
+        path: "/all-plants",
+        element: <AllPlants/>
       },
       {
         path: "/add-plant",
