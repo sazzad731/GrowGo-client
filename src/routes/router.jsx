@@ -9,6 +9,7 @@ import AllPlants from "../pages/AllPlants/AllPlants";
 import PlantDetails from "../pages/PlantDetails/PlantDetails";
 import MyPlants from "../pages/MyPlants/MyPlants";
 import UpdatePlant from "../pages/UpdatePlant/UpdatePlant";
+import NotFound from "../pages/NotFound/NotFound";
 
 export const router = createBrowserRouter([
   {
@@ -61,4 +62,8 @@ export const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "*",
+    element: <NotFound/>
+  }
 ]);

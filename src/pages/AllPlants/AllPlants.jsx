@@ -4,7 +4,6 @@ import { Link } from "react-router";
 const AllPlants = () => {
   const [ plants, setPlants ] = useState([]);
   const [ sortBy, setSortBy ] = useState("default")
-  console.log(sortBy)
   useEffect(()=>{
     fetch(`http://localhost:5000/all-plants?sortParams=${sortBy}`)
       .then((res) => res.json())
@@ -58,7 +57,7 @@ const AllPlants = () => {
                 <td className="py-3 px-6">{plant.wateringFreq}</td>
                 <td className="py-3 px-6">
                   <Link to={`/plant-details/${plant._id}`}>
-                    <button className="py-2 px-6 outline-2 font-semibold outline-greenPrimary text-greenPrimary hover:bg-greenPrimary hover:text-lightGreen transition-colors rounded-lg text-center dark:outline-lightGreen hover:dark:bg-lightGreen hover:dark:text-greenPrimary dark:text-lightGreen me-0 lg:me-5 cursor-pointer">
+                    <button className="text-sm py-2 px-6 outline-2 font-semibold outline-greenPrimary text-greenPrimary hover:bg-greenPrimary hover:text-lightGreen transition-colors rounded-lg text-center dark:outline-lightGreen hover:dark:bg-lightGreen hover:dark:text-greenPrimary dark:text-lightGreen cursor-pointer">
                       View Details
                     </button>
                   </Link>

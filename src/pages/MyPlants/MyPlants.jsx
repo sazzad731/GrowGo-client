@@ -74,16 +74,16 @@ const MyPlants = () => {
                 <td className="py-3 px-6 capitalize">{plant.category}</td>
                 <td className="py-3 px-6">{plant.wateringFreq}</td>
                 <td className="py-3 px-6 capitalize">{plant.careLevel}</td>
-                <td className="py-3 px-6 space-x-2">
+                <td className="py-3 px-6 md:space-x-2">
                   <Link
                     to={`/update-plant/${plant._id}`}
-                    className="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded-md text-sm cursor-pointer lg:mb-0 mb-2"
+                    className="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded-md text-sm cursor-pointer"
                   >
                     Update
                   </Link>
                   <button
                     onClick={()=>handleDeletePlant(plant._id)}
-                    className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-md text-sm cursor-pointer"
+                    className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-md text-sm cursor-pointer mt-2 md:mt-0"
                   >
                     Delete
                   </button>
