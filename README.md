@@ -1,12 +1,46 @@
-# React + Vite
+# 🌿 GrowGo - Plant Care Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+GrowGo is a Front-End, mobile-responsive web application built to help plant lovers manage and monitor the care of their indoor and outdoor plants. From watering schedules to plant health tracking, GrowGo is your digital gardening assistant.
 
-Currently, two official plugins are available:
+🔗 **Live Website**: []
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🚀 Features
+
+- 🔐 **User Authentication** – Secure login/register with Firebase (email & Google)
+- 🌱 **Plant Management** – Add, update, delete, and view personal plant records
+- 📆 **Care Scheduling** – Track watering frequency and care level using `date-fns`
+- 🎨 **Responsive UI** – Fully responsive for mobile, tablet, and desktop
+- 💡 **Interactive UI** – Tooltips, Sweetalerts2
+- 🔎 **All Plants Page** – Sort and view plant data in a searchable table
+- ⚙️ **Dark/Light Theme** – Toggle theme switch for personalized experience
+- 🚫 **404 Page** – Custom-designed not-found page for broken routes
+
+---
+
+## 🧰 Tech Stack
+
+- **Frontend**: React, Tailwind CSS, DaisyUI, Swiper.js, React Router, Firebase (Authentication & Hosting)
+- **Backend**: Express.js, MongoDB, Node.js
+- **Other Libraries**:
+  - `date-fns` – Date formatting
+  - `react-tooltip` – Tooltips
+  - `sweetalert2` – Alert popups
+  - `swiper` – Banner slider
+  - `react-icons` – Icons
+
+---
+
+## 📂 Pages Overview
+
+| Page             | Description                                   |
+|------------------|-----------------------------------------------|
+| Home             | Banner slider, new plants, care tips, themes  |
+| Login/Register   | Auth with validation and success/error toasts |
+| Add Plant        | Form with care details (Private Route)        |
+| All Plants       | Table with sorting and view details option    |
+| My Plants        | Manage user's added plants (CRUD)             |
+| Plant Details    | View plant profile with all data              |
+| 404 Page         | Custom error page for invalid URLs            |
