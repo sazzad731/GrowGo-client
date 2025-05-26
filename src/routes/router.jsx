@@ -7,6 +7,7 @@ import PrivateRoute from "./PrivateRoute";
 import Home from "../pages/Home/Home";
 import AllPlants from "../pages/AllPlants/AllPlants";
 import PlantDetails from "../pages/PlantDetails/PlantDetails";
+import MyPlants from "../pages/MyPlants/MyPlants";
 
 export const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ export const router = createBrowserRouter([
             <AddPlant />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/my-plants",
+        element: <PrivateRoute><MyPlants/></PrivateRoute>
       },
       {
         path: "/login",

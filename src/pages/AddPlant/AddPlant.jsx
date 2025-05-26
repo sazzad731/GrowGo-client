@@ -15,7 +15,7 @@ const AddPlant = () => {
       headers: {
         "content-type": "application/json"
       },
-      body: JSON.stringify({...plantData, name: user?.displayName, email: user?.email})
+      body: JSON.stringify({...plantData, userName: user?.displayName, userEmail: user?.email})
     })
       .then(res => res.json())
       .then(data => {
