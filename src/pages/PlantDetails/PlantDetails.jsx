@@ -19,7 +19,7 @@ const PlantDetails = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center min-h-screen">
-        <span className="loading loading-xl text-success dark:text-lightGreen"></span>
+        <span className="loading loading-xl dark:text-lightGreen"></span>
       </div>
     );
   }
