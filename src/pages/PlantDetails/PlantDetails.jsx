@@ -1,5 +1,6 @@
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
+import { format, formatDistanceToNow } from "date-fns";
 
 const PlantDetails = () => {
   const { id } = useParams();
@@ -55,11 +56,17 @@ const PlantDetails = () => {
           </p>
           <p className="text-sm text-gray-500 dark:text-lightGreen">
             Last Watered:{" "}
-            <span className="font-medium">{plant?.lastWatered}</span>
+            <span className="font-medium">
+              {format(new Date(plant?.lastWatered), "MMMM dd, yyyy")}
+            </span>
           </p>
           <p className="text-sm text-gray-500 dark:text-lightGreen">
             Next Watering:{" "}
-            <span className="font-medium">{plant?.nextWatering}</span>
+            <span className="font-medium">
+              {formatDistanceToNow(new Date(plant?.nextWatering), {
+                addSuffix: true,
+              })}
+            </span>
           </p>
           <p className="text-sm text-gray-500 dark:text-lightGreen">
             Health Status: <span className="font-medium">{plant?.health}</span>
