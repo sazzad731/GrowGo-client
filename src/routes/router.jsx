@@ -26,7 +26,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/plant-details/:id",
-        element: <PlantDetails />,
+        element: (
+          <PrivateRoute>
+            <PlantDetails />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/add-plant",
@@ -64,6 +68,6 @@ export const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: <NotFound/>
-  }
+    element: <NotFound />,
+  },
 ]);
