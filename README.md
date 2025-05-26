@@ -2,7 +2,7 @@
 
 GrowGo is a Front-End, mobile-responsive web application built to help plant lovers manage and monitor the care of their indoor and outdoor plants. From watering schedules to plant health tracking, GrowGo is your digital gardening assistant.
 
-🔗 **Live Website**: []
+🔗 **Live Website**: [https://grow-go-8c0b2.web.app/]
 
 
 ---
