@@ -6,6 +6,7 @@ const UpdatePlant = () => {
   const { user } = use(AuthContext);
   const { id } = useParams();
   const [ plant, getPlant ] = useState({})
+  const [ loading, setLoading ] = useState(true);
   const [ lastWateredDate, setLastWateredDate ] = useState()
   const [ nextWateringDate, setNextWateringDate ] = useState();
   const [ careLevel, setCareLevel ] = useState("");
@@ -20,6 +21,7 @@ const UpdatePlant = () => {
         setNextWateringDate(new Date(data.nextWatering).toLocaleDateString("en-CA"));
         setCareLevel(data.careLevel);
         setCategory(data.category);
+        setLoading(false)
       });
   },[id])
 
@@ -53,6 +55,14 @@ const UpdatePlant = () => {
         }
       });
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <span className="loading loading-xl dark:text-lightGreen"></span>
+      </div>
+    );
+  }
   return (
     <div className="min-h-screen px-3">
       <h2 className="text-center text-3xl mb-7 mt-10 font-semibold text-greenPrimary dark:text-lightGreen">

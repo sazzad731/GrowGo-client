@@ -40,6 +40,8 @@ const MyPlants = () => {
                 text: "Your file has been deleted.",
                 icon: "success",
               });
+              const remaining = myPlants.filter((plant) => plant._id !== id)
+              setMyPlants(remaining);
             }
           });
       }
