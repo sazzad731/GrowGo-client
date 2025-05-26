@@ -4,11 +4,20 @@ import { Link } from "react-router";
 const AllPlants = () => {
   const [ plants, setPlants ] = useState([]);
   const [ sortBy, setSortBy ] = useState("default")
+  const [ loading, setLoading ] = useState(true);
   useEffect(()=>{
     fetch(`https://grow-go-server.vercel.app/all-plants?sortParams=${sortBy}`)
       .then((res) => res.json())
-      .then((data) => setPlants(data));
-  }, [sortBy])
+      .then((data) =>{
+        setPlants(data)
+        setLoading(false);
+      });
+  }, [ sortBy ])
+  
+  if(loading){
+    return <div className="min-h-screen flex items-center justify-center"><span className="loading loading-xl dark:text-lightGreen"></span></div>
+  }
+
   return (
     <section className="max-w-7xl mx-auto px-4 py-16 min-h-screen">
       <h2 className="text-3xl font-bold text-green-800 mb-8 text-center">
