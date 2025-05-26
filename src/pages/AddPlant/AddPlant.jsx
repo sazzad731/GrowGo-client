@@ -33,18 +33,18 @@ const AddPlant = () => {
   }
   
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen px-3">
       <h2 className="text-center text-3xl mb-7 mt-10 font-semibold text-greenPrimary dark:text-lightGreen">
         Add a Plant
       </h2>
-      <div className="w-[76rem] mx-auto flex items-center bg-white dark:glass rounded-2xl">
+      <div className="xl:w-[76rem] mx-auto flex items-center lg:justify-between justify-center bg-white dark:glass rounded-2xl">
         <img
-          className="w-2xl h-[800px] rounded-l-2xl"
+          className="w-1/2 h-[800px] rounded-l-2xl object-cover hidden lg:block"
           src={sidePhoto}
           alt="plant"
         />
-        <form onSubmit={handleAddPlant}>
-          <div className="grid grid-cols-2 gap-3 px-10">
+        <form onSubmit={handleAddPlant} className="lg:w-1/2 p-5">
+          <div className="md:grid gap-3">
             <fieldset className="fieldset">
               <legend className="fieldset-legend dark:text-lightGreen">
                 Plant Name

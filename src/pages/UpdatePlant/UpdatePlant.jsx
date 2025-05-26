@@ -54,7 +54,7 @@ const UpdatePlant = () => {
       });
   };
   return (
-    <div className="min-h-screen px-2">
+    <div className="min-h-screen px-3">
       <h2 className="text-center text-3xl mb-7 mt-10 font-semibold text-greenPrimary dark:text-lightGreen">
         Update a Plant
       </h2>
