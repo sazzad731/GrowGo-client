@@ -5,7 +5,7 @@ const NewPlants = () => {
   const [plants, setPlants] = useState([])
   const [ loading, setLoading ] = useState(true);
   useEffect(()=>{
-    fetch("http://localhost:5000/new-plant")
+    fetch("https://grow-go-server.vercel.app/new-plant")
       .then((res) => res.json())
       .then((result) => {
         setPlants(result)

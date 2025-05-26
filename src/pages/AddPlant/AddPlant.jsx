@@ -10,7 +10,7 @@ const AddPlant = () => {
     const formData = new FormData(form);
     const plantData = Object.fromEntries(formData.entries());
 
-    fetch("http://localhost:5000/add-plant", {
+    fetch("https://grow-go-server.vercel.app/add-plant", {
       method: "POST",
       headers: {
         "content-type": "application/json"

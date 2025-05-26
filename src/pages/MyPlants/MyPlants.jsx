@@ -6,11 +6,16 @@ import Swal from "sweetalert2";
 const MyPlants = () => {
   const {user} = use(AuthContext)
   const [ myPlants, setMyPlants ] = useState([])
+  const [ loading, setLoading ] = useState(true);
 
   useEffect(()=>{
-    fetch(`http://localhost:5000/my-plants/${user?.email}`)
+    fetch(`https://grow-go-server.vercel.app/my-plants/${user?.email}`)
       .then((res) => res.json())
-      .then((data) => setMyPlants(data));
+      .then((data) =>
+      {
+        setMyPlants(data)
+        setLoading(false)
+      });
   }, [ user?.email ])
 
   const handleDeletePlant = (id)=>{
@@ -24,7 +29,7 @@ const MyPlants = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/delete-plant/${id}`, {
+        fetch(`https://grow-go-server.vercel.app/delete-plant/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -40,6 +45,10 @@ const MyPlants = () => {
       }
     });
     
+  }
+
+  if(loading){
+    return <div className="min-h-screen flex items-center justify-center"><span className="loading loading-xl dark:text-lightGreen"></span></div>
   }
 
   return (

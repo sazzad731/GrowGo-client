@@ -12,7 +12,7 @@ const UpdatePlant = () => {
   const [ category, setCategory ] = useState("");
 
   useEffect(()=>{
-    fetch(`http://localhost:5000/plant-detail/${id}`)
+    fetch(`https://grow-go-server.vercel.app/plant-detail/${id}`)
       .then((res) => res.json())
       .then((data) =>{
         getPlant(data)
@@ -29,7 +29,7 @@ const UpdatePlant = () => {
     const formData = new FormData(form);
     const plantData = Object.fromEntries(formData.entries());
 
-    fetch(`http://localhost:5000/update-plant/${id}`, {
+    fetch(`https://grow-go-server.vercel.app/update-plant/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

@@ -5,7 +5,7 @@ const AllPlants = () => {
   const [ plants, setPlants ] = useState([]);
   const [ sortBy, setSortBy ] = useState("default")
   useEffect(()=>{
-    fetch(`http://localhost:5000/all-plants?sortParams=${sortBy}`)
+    fetch(`https://grow-go-server.vercel.app/all-plants?sortParams=${sortBy}`)
       .then((res) => res.json())
       .then((data) => setPlants(data));
   }, [sortBy])
