@@ -10,7 +10,6 @@ const AllPlants = () => {
       .then((res) => res.json())
       .then((data) => setPlants(data));
   }, [sortBy])
-  console.log(plants);
   return (
     <section className="max-w-7xl mx-auto px-4 py-16 min-h-screen">
       <h2 className="text-3xl font-bold text-green-800 mb-8 text-center">

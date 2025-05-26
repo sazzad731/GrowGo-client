@@ -8,6 +8,7 @@ import Home from "../pages/Home/Home";
 import AllPlants from "../pages/AllPlants/AllPlants";
 import PlantDetails from "../pages/PlantDetails/PlantDetails";
 import MyPlants from "../pages/MyPlants/MyPlants";
+import UpdatePlant from "../pages/UpdatePlant/UpdatePlant";
 
 export const router = createBrowserRouter([
   {
@@ -35,8 +36,20 @@ export const router = createBrowserRouter([
         ),
       },
       {
+        path: "/update-plant/:id",
+        element: (
+          <PrivateRoute>
+            <UpdatePlant />
+          </PrivateRoute>
+        ),
+      },
+      {
         path: "/my-plants",
-        element: <PrivateRoute><MyPlants/></PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <MyPlants />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/login",
