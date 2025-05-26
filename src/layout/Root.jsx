@@ -11,7 +11,7 @@ const Root = () => {
       } bg-lightGreen dark:bg-greenPrimary font-inter`}
     >
       <Navbar setTheme={setTheme} theme={theme} />
-      <main className="max-w-[100rem] mx-auto lg:px-0 px-3">
+      <main className="max-w-[100rem] mx-auto lg:px-0 px-3 min-h-screen">
         <Outlet />
       </main>
       <Footer />

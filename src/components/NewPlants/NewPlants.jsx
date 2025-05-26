@@ -47,7 +47,7 @@ const NewPlants = () => {
                   <p className="text-greenSecondary dark:text-lightGreen mb-4">
                     {plant?.description}
                   </p>
-                  <Link to="/plant-details" className="py-2 px-6 outline-2 font-semibold outline-greenPrimary text-greenPrimary hover:bg-greenPrimary hover:text-lightGreen transition-colors rounded-lg text-center dark:outline-lightGreen hover:dark:bg-lightGreen hover:dark:text-greenPrimary dark:text-lightGreen me-0 lg:me-5 cursor-pointer">
+                  <Link to={`/plant-details/${plant?._id}`} className="py-2 px-6 outline-2 font-semibold outline-greenPrimary text-greenPrimary hover:bg-greenPrimary hover:text-lightGreen transition-colors rounded-lg text-center dark:outline-lightGreen hover:dark:bg-lightGreen hover:dark:text-greenPrimary dark:text-lightGreen me-0 lg:me-5 cursor-pointer">
                     View Details
                   </Link>
                 </div>
