@@ -38,9 +38,19 @@ const Register = () => {
             });
             navigate("/");
           })
-          .catch((err) => console.log(err));
+          .catch((err) => {
+            Swal.fire({
+              title: err.message,
+              icon: "error"
+            })
+          });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        Swal.fire({
+          title: err.message,
+          icon: "error"
+        })
+      });
   }
   return (
     <div className="min-h-screen pb-20 lg:px-0 px-3">

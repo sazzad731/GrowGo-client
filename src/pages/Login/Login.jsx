@@ -8,7 +8,6 @@ const Login = () => {
   const [ toggleEye, setToggleEye ] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location)
 
 
   const handleEmailPassLogin = (event)=>{
@@ -41,7 +40,12 @@ const Login = () => {
           icon: "success",
         });
         navigate("/")
-      }).catch(err => console.log(err));
+      }).catch(err => {
+        Swal.fire({
+          title: err.message,
+          icon: "error"
+        })
+      });
   }
   return (
     <div className="min-h-screen pb-20 lg:px-0 px-3">
