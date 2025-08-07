@@ -55,3 +55,19 @@ GrowGo is a Front-End, mobile-responsive web application built to help plant lov
 | My Plants        | Manage user's added plants (CRUD)             |
 | Plant Details    | View plant profile with all data              |
 | 404 Page         | Custom error page for invalid URLs            |
+
+
+---
+
+## 📦 Dependencies
+
+> Major dependencies only
+
+- `react`, `react-dom`, `react-router`
+- `firebase`
+- `sweetalert2`
+- `tailwindcss`, `daisyui`
+- `react-icons`
+- `react-tooltip`
+- `swiper`
+- `date-fns`
