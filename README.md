@@ -7,6 +7,17 @@ GrowGo is a Front-End, mobile-responsive web application built to help plant lov
 
 ---
 
+## ⚙️ Scripts
+
+| Script         | Description                  |
+|----------------|------------------------------|
+| `npm run dev`  | Start development server     |
+| `npm run build`| Build for production         |
+| `npm run preview`| Preview production build |
+| `npm run lint` | Run ESLint checks            |
+
+---
+
 ## 🚀 Features
 
 - 🔐 **User Authentication** – Secure login/register with Firebase (email & Google)
